@@ -1,0 +1,25 @@
+{% extends 'news/default.html' %}
+{% load custom_filters %}
+{% block title %}
+    Новостной портал
+{% endblock title %}
+
+{% block content %}
+{% for new in news %}
+    <div>
+        <div>
+            <h3>{{ new.title|censor }}</h3>
+        </div>
+        <div>
+            {{ new.text |truncatechars:20|censor }}
+        </div>
+        <div>
+            <br>
+            <i>
+            {{ new.date_pub |date:'d M Y' }}
+            </i>
+        </div>
+    </div>
+<hr>
+{% endfor %}
+{% endblock content %}
